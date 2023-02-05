@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tic Tac Toe</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.svg">
+</head>
+<body id="body">
+    <section id="head">
+        <h1>Tic Tac Toe</h1>
+        <span id="modeChanger">
+            <button id="gameModeButton" class="button-78" role="button" onclick="changeGameMode()">
+                Play With Friend
+            </button>
+        </span>
+    </section>
+
+    <section id="main">
+
+        <div id="topMargin"></div>
+    
+        <div id="mainCenter">
+                <div id="leftMargin"></div>
+
+                <div id="center">
+                    <div id="g00" onclick="clicked00()">
+                        <span id="span00" class="spanxo"></span>
+                    </div>
+                    
+                    <div id="g01" onclick="clicked01()">
+                        <span id="span01" class="spanxo"></span>
+                    </div>
+                    
+                    <div id="g02" onclick="clicked02()">
+                        <span id="span02" class="spanxo"></span>
+                    </div>
+                    
+                    <div id="g10" onclick="clicked10()">
+                        <span id="span10" class="spanxo"></span>
+                    </div>
+                    
+                    <div id="g11" onclick="clicked11()">
+                        <span id="span11" class="spanxo"></span>
+                    </div>
+                    
+                    <div id="g12" onclick="clicked12()">
+                        <span id="span12" class="spanxo"></span>
+                    </div>
+                    
+                    <div id="g20" onclick="clicked20()">
+                        <span id="span20" class="spanxo"></span>
+                    </div>
+                    
+                    <div id="g21" onclick="clicked21()">
+                        <span id="span21" class="spanxo"></span>
+                    </div>
+                    
+                    <div id="g22" onclick="clicked22()">
+                        <span id="span22" class="spanxo"></span>
+                    </div>
+
+                </div>
+
+                <div id="rightMargin"></div>
+            </div>
+
+        <div id="bottomMargin"></div>
+    
+    </section>
+
+    <p id="button">
+        <button class="button" role="button" onclick="resetGame()">Replay</button>
+    </p>
+
+    <footer id="footer">
+        <div class="container">
+          <p>Copyright © 2023 Tic Tac Toe</p>
+          <nav>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </nav>
+        </div>
+      </footer>
+      
+
+    <script src="main.js"></script>
+</body>
+</html>
