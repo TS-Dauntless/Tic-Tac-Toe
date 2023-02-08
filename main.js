@@ -77,9 +77,49 @@ function getRandomUnfilledCoordinates() {
     
     let result = temp[getRandomInteger(temp.length)];
     arr[result[0]][result[1]] = next;
-    console.log(result);
-    console.log(arr);
+    
     return result;
+}
+
+
+function showTieMessageandReset() {
+    let tie = document.createElement("div");
+
+    tie.id = "tie-pop-up";
+    tie.innerText = "It's a Tie";
+
+    tie.style.width = "90vmin";
+    tie.style.height = "30vmin";
+    tie.style.display = "block";
+    tie.style.position = "absolute";
+    tie.style.fontSize = "20vmin";
+    tie.style.color = "antiquewhite";
+    tie.style.textAlign = "center";
+    tie.style.top = "40vmin";
+    tie.style.backgroundColor = "dimgrey";
+    tie.style.opacity = "0.95"
+
+    document.getElementById("center").appendChild(tie);
+    
+    sleep = setTimeout(function() {
+        document.getElementById("tie-pop-up").remove();
+        resetGame();
+    }, 2000);
+}
+
+
+function checkIfAllSpacesFilled() {
+    if (!isGameOver) {
+        let isAllSpacesFilled = true;
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] === undefined)
+                    isAllSpacesFilled = false;
+            }
+        }
+        if (isAllSpacesFilled)
+            showTieMessageandReset();
+    }
 }
 
 
@@ -100,9 +140,10 @@ function draw(i, j) {
     image.style.height = "24vmin";
 
     document.getElementById("span"+ i + j).appendChild(image);
-    
 
     checkWin();
+
+    checkIfAllSpacesFilled();
 
     next = !next;
     isBotTurn = !isBotTurn;
@@ -146,6 +187,8 @@ function drawStrike(pos, deg) {
     image.style.transform = "rotate(" + deg+ ")";
 
     document.getElementById("center").appendChild(image);
+
+    isGameOver = true;
 
     moveToButton();
 }
@@ -191,7 +234,6 @@ function checkWin() {
 
 
 function changeGameModeButtonText() {
-    console.log("change game mode");
     if (isBotPlaying)
         document.getElementById("gameModeButton").innerHTML = "Play With Computer";
     else
@@ -202,9 +244,7 @@ function changeGameModeButtonText() {
 function changeGameMode() {
     resetGame();
     changeGameModeButtonText();
-    console.log(isBotPlaying);
     isBotPlaying = !isBotPlaying;
-    console.log(isBotPlaying);
 }
 
 
@@ -225,6 +265,7 @@ function resetGame() {
     next = true;
     isCompleted = false;
     isBotTurn = false;
+    isGameOver = false;
 
     deleteImagesOnScreen();
 
@@ -248,6 +289,7 @@ const arr = [
 
 let next = true;
 
+let isGameOver = false;
 
 // Saving Load Time in the Middle
 function loadImg(src) {
